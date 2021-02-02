@@ -1,3 +1,4 @@
 conver.sh
 qtQemu.ui
-venv
+venv/*
+venv*
