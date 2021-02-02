@@ -1,0 +1,5 @@
+click==7.1.2
+PyQt5==5.15.2
+PyQt5-sip==12.8.1
+qt5-applications==5.15.2.2.1
+qt5-tools==5.15.2.1.0.1
