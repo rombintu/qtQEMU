@@ -31,7 +31,7 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
     def bootNewCar(self):
         isoFile = QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери файл "iso"', '*.iso')[0]
         pathToDisk = QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери диск', os.path.abspath(os.curdir)+'/images', '*.qcow')[0]
-        countMem, yes = QtWidgets.QInputDialog.getText(self, 'Новая машина', 'Сколько памяти выделить:')
+        countMem, yes = QtWidgets.QInputDialog.getText(self, 'Новая машина', 'Сколько ОЗУ выделить (MB):')
         if yes:
             try:
                 bootCar(pathToDisk, isoFile, countMem)
@@ -57,8 +57,9 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
     def startCar(self):
         memCount = self.comboBox.currentText()
         nameCar = self.lineEdit.text()
+        kvmStatus = self.checkBox.checkState()
         try:
-            startVM(nameCar, memCount)
+            startVM(nameCar, memCount, kvmStatus)
         except Exception as e:
             errorWin = QtWidgets.QErrorMessage(self)
             errorWin.showMessage(str(e))
