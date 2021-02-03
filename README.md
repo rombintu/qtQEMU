@@ -13,6 +13,9 @@ gui for qemu by Nickolsky (for Linux)
 > python main.py  
 
 *Install (beta):*
+> git clone https://github.com/rombintu/qtQEMU.git  
+> cd qtQEMU  
+> pip install -r req.txt  
 > sh pyinstaller.sh  
 > ln qtQemu /bin/qtqemu  
 > qtqemu  
