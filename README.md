@@ -13,7 +13,9 @@ gui for qemu by Nickolsky (for Linux)
 > python main.py  
 
 *Install (beta):*
-> sh pyinstaller.sh
+> sh pyinstaller.sh  
+> ln qtQemu /bin/qtqemu  
+> qtqemu  
 
 *Manual:*  
 Для работы с ВМ требуется создать диск (Создать -> Новый диск)  
