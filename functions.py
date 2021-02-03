@@ -13,4 +13,4 @@ def startVM(car, mem, kvmStatus):
         os.system(f"qemu-system-x86_64 -hda {car} -m {mem}")
 
 def bootCar(disk, pathToISO, mem):
-    os.system(f"qemu-system-x86_64 -hda {disk} -boot d -cdrom {pathToISO} -m {mem}")
+    os.system(f"qemu-system-x86_64 -hda {disk} -boot d -cdrom {pathToISO} -m {mem} -enable-kvm")
