@@ -2,7 +2,7 @@ import sys
 import form
 import os
 
-from functions import createDisk, deleteDisk, startVM, bootCar
+from functions import createDisk, deleteDisk, startVM, bootCar, converToRaw
 from PyQt5 import QtWidgets
 
 
@@ -16,6 +16,8 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
         self.action.triggered.connect(self.createNewDisk)
         self.action_2.triggered.connect(self.bootNewCar)
         self.action_3.triggered.connect(self.deleteCar)
+        self.action_4.triggered.connect(self.converting)
+        self.action_iso.triggered.connect(self.bootIso)
 
     def createNewDisk(self):
         nameCar, yes = QtWidgets.QInputDialog.getText(self, 'Новый диск', 'Название нового диска:')
@@ -30,7 +32,8 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
 
     def bootNewCar(self):
         isoFile = QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери файл "iso"', '*.iso')[0]
-        pathToDisk = QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери диск', os.path.abspath(os.curdir)+'/images', '*.qcow')[0]
+        pathToDisk = \
+        QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери диск', os.path.abspath(os.curdir) + '/images', '*.qcow *.raw')[0]
         countMem, yes = QtWidgets.QInputDialog.getText(self, 'Новая машина', 'Сколько ОЗУ выделить (MB):')
         if yes:
             try:
@@ -51,7 +54,8 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
                 return False
 
     def chooseCar(self):
-        pathToCar = QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери файл', os.path.abspath(os.curdir)+'/images', '*.qcow *.img')[0]
+        pathToCar = QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери файл', os.path.abspath(os.curdir) + '/images',
+                                                          '*.qcow *.img *.raw')[0]
         self.lineEdit.setText(pathToCar)
 
     def startCar(self):
@@ -64,6 +68,28 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
             errorWin = QtWidgets.QErrorMessage(self)
             errorWin.showMessage(str(e))
             return False
+
+    def converting(self):
+        pathToDisk = \
+        QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери диск', os.path.abspath(os.curdir) + '/images', '*.qcow')[0]
+        try:
+            converToRaw(pathToDisk)
+        except Exception as e:
+            errorWin = QtWidgets.QErrorMessage(self)
+            errorWin.showMessage(str(e))
+            return False
+
+    def bootIso(self):
+        isoFile = QtWidgets.QFileDialog.getOpenFileName(self, 'Выбери файл "iso"', '*.iso')[0]
+        countMem, yes = QtWidgets.QInputDialog.getText(self, 'Новая машина', 'Сколько ОЗУ выделить (MB):')
+        if yes:
+            try:
+                bootCar(False, isoFile, countMem)
+            except Exception as e:
+                errorWin = QtWidgets.QErrorMessage(self)
+                errorWin.showMessage(str(e))
+                return False
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

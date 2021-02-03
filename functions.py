@@ -8,9 +8,15 @@ def deleteDisk(name):
 
 def startVM(car, mem, kvmStatus):
     if kvmStatus == 2:
-        os.system(f"qemu-system-x86_64 -hda {car} -m {mem} -enable-kvm")
-    else:
         os.system(f"qemu-system-x86_64 -hda {car} -m {mem}")
+    else:
+        os.system(f"qemu-system-x86_64 -hda {car} -m {mem} -enable-kvm")
 
 def bootCar(disk, pathToISO, mem):
-    os.system(f"qemu-system-x86_64 -hda {disk} -boot d -cdrom {pathToISO} -m {mem} -enable-kvm")
+    if disk == False:
+        os.system(f"qemu-system-x86_64 -boot d -cdrom {pathToISO} -m {mem} -enable-kvm")
+    else:
+        os.system(f"qemu-system-x86_64 -hda {disk} -boot d -cdrom {pathToISO} -m {mem} -enable-kvm")
+
+def converToRaw(disk):
+    os.system(f"qemu-img convert -O raw {disk} {disk}.raw")
