@@ -1,5 +1,5 @@
 # qtQEMU
-gui for qemu by Nickolsky
+gui for qemu by Nickolsky (for Linux)
 
 Dependencies:
 - qemu
@@ -7,9 +7,10 @@ Dependencies:
 - python3
 
 Run once:
-> cd qtQEMU; 
-> pip install -r req.txt; 
-> python main.py
+- git clone https://github.com/rombintu/qtQEMU.git
+- cd qtQEMU
+- pip install -r req.txt
+- python main.py
 
-Install:
-> ./qtQEMU/pyinstaller.sh
+Install (beta):
+> sh pyinstaller.sh
