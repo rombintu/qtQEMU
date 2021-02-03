@@ -1,10 +1,10 @@
 import os
 
-def createDisk(name, gb):
-    os.system(f"qemu-img create -f qcow2 images/{name}.qcow {gb}G")
+def createDisk(pathDir, name, gb):
+    os.system(f"qemu-img create -f qcow2 {pathDir}/{name}.qcow {gb}G")
 
 def deleteDisk(name):
-    os.system(f"rm images/{name}")
+    os.system(f"rm {name}")
 
 def startVM(car, mem, kvmStatus):
     if kvmStatus == 2:
@@ -19,4 +19,5 @@ def bootCar(disk, pathToISO, mem):
         os.system(f"qemu-system-x86_64 -hda {disk} -boot d -cdrom {pathToISO} -m {mem} -enable-kvm")
 
 def converToRaw(disk):
-    os.system(f"qemu-img convert -O raw {disk} {disk}.raw")
+    name = str(disk).split('.')
+    os.system(f"qemu-img convert -O raw {disk} {name[0]}.raw")
