@@ -3,3 +3,4 @@ qtQemu.ui
 venv/*
 venv*
 __pycache__
+.idea
