@@ -1,1 +1,0 @@
-pyuic5 qtQemu.ui -o form.py
