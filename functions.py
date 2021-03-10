@@ -6,11 +6,8 @@ def createDisk(pathDir, name, gb):
 def deleteDisk(name):
     os.system(f"rm {name}")
 
-def startVM(car, mem, kvmStatus):
-    if kvmStatus == 2:
-        os.system(f"qemu-system-x86_64 -hda {car} -m {mem}")
-    else:
-        os.system(f"qemu-system-x86_64 -hda {car} -m {mem} -enable-kvm")
+def startVM(car, mem):
+    os.system(f"qemu-system-x86_64 -hda {car} -m {mem} -enable-kvm")
 
 def bootCar(disk, pathToISO, mem):
     if disk == False:

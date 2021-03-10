@@ -27,8 +27,7 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
             try:
                 createDisk(pathDir, newDisk, sizeDisk)
             except Exception as e:
-                errorWin = QtWidgets.QErrorMessage(self)
-                errorWin.showMessage(str(e))
+                print(e)
                 return False
 
     def bootNewCar(self):
@@ -39,8 +38,8 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
             try:
                 bootCar(pathToDisk, isoFile, countMem)
             except Exception as e:
-                errorWin = QtWidgets.QErrorMessage(self)
-                errorWin.showMessage(str(e))
+                print(e)
+                print("Попробуй переименовать папки в простые имена")
                 return False
 
     def deleteCar(self):
@@ -48,8 +47,7 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
         try:
             deleteDisk(pathToDisk)
         except Exception as e:
-            errorWin = QtWidgets.QErrorMessage(self)
-            errorWin.showMessage(str(e))
+            print(e)
             return False
 
     def chooseCar(self):
@@ -59,12 +57,10 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
     def startCar(self):
         memCount = self.comboBox.currentText()
         nameCar = self.lineEdit.text()
-        kvmStatus = self.checkBox.checkState()
         try:
-            startVM(nameCar, memCount, kvmStatus)
+            startVM(nameCar, memCount)
         except Exception as e:
-            errorWin = QtWidgets.QErrorMessage(self)
-            errorWin.showMessage(str(e))
+            print(e)
             return False
 
     def converting(self):
@@ -73,8 +69,7 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
         try:
             converToRaw(pathToDisk)
         except Exception as e:
-            errorWin = QtWidgets.QErrorMessage(self)
-            errorWin.showMessage(str(e))
+            print(e)
             return False
 
     def bootIso(self):
@@ -84,8 +79,7 @@ class App(QtWidgets.QMainWindow, form.Ui_MainWindow):
             try:
                 bootCar(False, isoFile, countMem)
             except Exception as e:
-                errorWin = QtWidgets.QErrorMessage(self)
-                errorWin.showMessage(str(e))
+                print(e)
                 return False
 
 

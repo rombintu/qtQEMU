@@ -1,5 +1,3 @@
-convert.sh
-qtQemu.ui
 venv/*
 venv*
 __pycache__

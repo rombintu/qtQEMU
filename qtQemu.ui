@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>590</width>
+    <height>224</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>590</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>590</width>
+    <height>224</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>qtQEMU</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="3" alignment="Qt::AlignVCenter">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Моя виртуальная машина</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Выбрать</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" alignment="Qt::AlignLeft">
+     <widget class="QComboBox" name="comboBox">
+      <property name="currentText">
+       <string>1024</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>1024</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>512</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2048</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>4096</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Выделить ОЗУ</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string> Путь до машины</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2" alignment="Qt::AlignRight">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>Запустить</string>
+      </property>
+      <property name="shortcut">
+       <string>Return</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>590</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Создать</string>
+    </property>
+    <addaction name="action"/>
+    <addaction name="action_2"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Автор</string>
+    </property>
+    <addaction name="actionby_Nickolsky"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Действия</string>
+    </property>
+    <addaction name="action_iso"/>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_2"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action">
+   <property name="text">
+    <string>Новый диск</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Новая VM</string>
+   </property>
+  </action>
+  <action name="actionby_Nickolsky">
+   <property name="text">
+    <string>by Nickolsky</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Удалить диск</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Конвертировать в raw</string>
+   </property>
+  </action>
+  <action name="action_iso">
+   <property name="text">
+    <string>Запустить iso без диска</string>
+   </property>
+  </action>
+  <action name="action_VM_Windows">
+   <property name="text">
+    <string>Новая VM (Windows)</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
